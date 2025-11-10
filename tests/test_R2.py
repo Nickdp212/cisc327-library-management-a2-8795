@@ -6,7 +6,7 @@ Tests the functionality of displaying all books in the catalog with proper forma
 import os
 from datetime import datetime, timedelta
 from database import init_database, get_all_books, insert_book, get_book_by_isbn, add_sample_data
-from library_service import search_books_in_catalog
+from services.library_service import search_books_in_catalog
 
 
 
