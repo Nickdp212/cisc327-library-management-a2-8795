@@ -98,7 +98,6 @@ def  test_fee_calculation_unborrowed_book(mocker):
     
 #New
 def test_fee_calculation_medium_fee(mocker):
-   #inserting borrowing record
 
     mocker.patch('services.library_service.get_book_by_id', return_value={
         'id': 1,
@@ -130,3 +129,12 @@ def test_fee_calculation_no_book(mocker):
     assert 0.00 == fee_dict['fee_amount']
     assert 0 == fee_dict['days_overdue']
     assert "not found" in fee_dict['status'].lower()
+
+def test_fee_calculation_invalid_id(mocker):
+    
+    """Test fee calculation with a invalid patron id"""
+    
+    fee_dict = calculate_late_fee_for_book("abcdefg", 1)
+    assert 0.00 == fee_dict['fee_amount']
+    assert 0 == fee_dict['days_overdue']
+    assert " 6 digits." in fee_dict['status'].lower()
