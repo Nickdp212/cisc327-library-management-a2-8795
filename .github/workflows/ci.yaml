@@ -30,7 +30,7 @@ jobs:
           python_version: /${{ matrix.python_version }}
     
       - name: Install dependencies
-        run: python -m pip install pytest requests pytest-mock 
+        run: python -m pip install pytest requests pytest-mock werkzeug
 
       - name: Run tests
         run: pytest
